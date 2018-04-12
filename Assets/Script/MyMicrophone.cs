@@ -10,6 +10,8 @@ public class MyMicrophone : MonoBehaviour
 
     private bool isMicrophoneSet = false;
 
+    public float volumeBoost = 1;
+
     IEnumerator Start()
     {
         var aud = GetComponent<AudioSource>();
@@ -29,7 +31,7 @@ public class MyMicrophone : MonoBehaviour
         if (!isMicrophoneSet) return;
 
         float vol = GetAveragedVolume();
-        float size = 450 * vol;
+        float size = 450 * vol * volumeBoost;
         gauge.SetValue(size);
     }
 
